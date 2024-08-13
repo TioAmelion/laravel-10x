@@ -29,13 +29,13 @@ services:
 
     # db mysql
     db:
-        image: mysql:5.7.22
+        image: mariadb:10.3.39
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE:-laravel}
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-            MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
-            MYSQL_USER: ${DB_USERNAME:-username}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-root}
+            MYSQL_USER: ${DB_USERNAME:-root}
         volumes:
             - ./.docker/mysql/dbdata:/var/lib/mysql
         ports:
