@@ -6,12 +6,12 @@ use App\Http\Requests\StoreUpdateSupport;
 
 class CreateSupportDTO {
     public function __construct(
-        string $subject,
-        string $status,
-        string $body
+        public string $subject,
+        public string $status,
+        public string $body
     ) {}
 
-    public function makeFromRequest(StoreUpdateSupport $request) : self
+    public static function makeFromRequest(StoreUpdateSupport $request) : self
     {
         return new self(
             $request->subject,
