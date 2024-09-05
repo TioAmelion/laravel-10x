@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DTO\Supports\{CreateSupportDTO, UpdateSupportDTO};
+use App\Enums\paginationEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
@@ -16,8 +17,8 @@ class SupportController extends Controller
     public function index(Request $request)
     {
         $supports = $this->service->paginate(
-            page: $request->get('page', 1),
-            totalPerPage: $request->get('totalPerPage', 2),
+            page: $request->get('page', paginationEnum::page->value),
+            totalPerPage: $request->get('totalPerPage', paginationEnum::totalPerPage->value),
             filter: $request->filter
         );
 
@@ -31,9 +32,11 @@ class SupportController extends Controller
         return view('admin/supports/create');
     }
 
-    public function store(StoreUpdateSupport $request, Support $support)
+    public function store(StoreUpdateSupport $request)
     {
-        $this->service->new(CreateSupportDTO::makeFromRequest($request));
+        $this->service->new(
+            CreateSupportDTO::makeFromRequest($request)
+        );
 
         return redirect()->route('supports.index');
     }

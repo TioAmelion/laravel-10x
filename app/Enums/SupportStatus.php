@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Exception;
-
 enum SupportStatus: string
 {
     case A = "Open";
