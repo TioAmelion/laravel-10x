@@ -1,0 +1,2 @@
+172.24.0.1 - - [09/Sep/2024:16:29:24 +0000] "GET /supports?page=4&filter= HTTP/1.1" 500 1135054 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+172.24.0.1 - - [09/Sep/2024:16:29:26 +0000] "GET /favicon.ico HTTP/1.1" 200 0 "http://localhost:8989/supports?page=4&filter=" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"

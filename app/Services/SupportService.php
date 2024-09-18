@@ -34,7 +34,7 @@ class SupportService {
         return $this->repository->findOne($id);
     }
 
-    public function new(CreateSupportDTO $dto): stdClass
+    public function new(CreateSupportDTO $dto)
     {
         return $this->repository->new($dto);
     }
@@ -44,8 +44,8 @@ class SupportService {
         return $this->repository->update($dto);
     }
 
-    public function delete(string $id): bool
+    public function delete(string $id): void
     {
-        return $this->repository->delete($id);
+        $this->repository->delete($id);
     }
 }

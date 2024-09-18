@@ -14,11 +14,11 @@ class SupportResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request); //caso o create seria do Model ex: Support->create() retornaria sem erro
+        //return parent::toArray($request); //caso o create seria do Model ex: Support->create() retornaria sem erro
         return [
-            'identify' => $request->id,
-            'subject' => $request->subject,
-            'body' => $request->body,
+            'identify' => $this->id,
+            'subject' => $this->subject,
+            'content' => $this->body,
             // 'dt_created' => Carbon::make($request->created_at)->format('Y-m-d H:i:s')
         ];
     }

@@ -19,7 +19,6 @@ class SupportEloquentORM implements SupportRepositoryInterface {
                         $query->orWhere('body', 'like', "%{$filter}%");
                     }
                 })->paginate($totalPerPage, '*', 'page', $page);
-        // dd((new PaginationPresenter($result))->items());
         return new PaginationPresenter($result);
     }
 
@@ -45,18 +44,19 @@ class SupportEloquentORM implements SupportRepositoryInterface {
         return (object) $support->toArray();
     }
 
-    public function delete(string $id): bool
+    public function delete(string $id): void
     {
-        return $this->model->findOrFail($id)->delete();
+        $this->model->findOrFail($id)->delete();
     }
 
-    public function new(CreateSupportDTO $dto): stdClass
+    public function new(CreateSupportDTO $dto)
     {
         $support = $this->model->create(
             (array) $dto
         );
 
-        return (object) $support->toArray;
+        // return (object) $support->toArray;
+        return $support;
     }
 
     public function update(UpdateSupportDTO $dto): stdClass|null
