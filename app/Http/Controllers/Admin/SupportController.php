@@ -38,7 +38,9 @@ class SupportController extends Controller
             CreateSupportDTO::makeFromRequest($request)
         );
 
-        return redirect()->route('supports.index');
+        return redirect()
+                ->route('supports.index')
+                ->with('message', 'Cadastrado com Sucesso');;
     }
 
     public function show(int $id)
@@ -60,7 +62,7 @@ class SupportController extends Controller
         return view('admin/supports/edit', compact('support'));
     }
 
-    public function update(StoreUpdateSupport $request, Support $support, int $id)
+    public function update(StoreUpdateSupport $request, Support $support, string $id)
     {
 
         // $support->update($request->only([
@@ -70,13 +72,15 @@ class SupportController extends Controller
 
         // $support->update($request->validate());
 
-        $support = $this->service->update(UpdateSupportDTO::makeFromRequest($request));
+        $support = $this->service->update(UpdateSupportDTO::makeFromRequest($request, $id));
 
         if(!$support) {
             return back();
         }
 
-        return redirect()->route('supports.index');
+        return redirect()
+                ->route('supports.index')
+                ->with('message', 'Atualizado com Sucesso');
     }
 
     public function destroy(string $id)

@@ -15,7 +15,7 @@ class SupportEloquentORM implements SupportRepositoryInterface {
     {
         $result = $this->model->where(function($query) use ($filter) {
                     if($filter) {
-                        $query->where('subject', $filter);
+                        $query->where('subject', 'like',  "%{$filter}%");
                         $query->orWhere('body', 'like', "%{$filter}%");
                     }
                 })->paginate($totalPerPage, '*', 'page', $page);
